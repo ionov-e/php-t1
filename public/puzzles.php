@@ -7,75 +7,120 @@ function assert_failed($file, $line, $expr)
 
 function factorial(int $n): int
 {
-    $factorial = 1;
-    for ($i = 1; $i <= $n; $i++) {
-        $factorial = $factorial * $i;
-    }
-    return $factorial;
+    return array_reduce(
+        range(1, $n),
+        function ($carry, $item) {
+            return $item === 0 ? 1 : $carry * $item;
+        },
+        1
+    );
 }
 
 assert_options(ASSERT_CALLBACK, 'assert_failed');
 
-echo('--------------------------    0    --------------------------<br>');
+echo('Puzzle 0 --------------------------    0    --------------------------<br>');
 
 assert(factorial(0) == 1);
 assert(factorial(1) == 1);
 assert(factorial(4) == 24);
 
 
-echo('--------------------------    1    --------------------------<br>');
+echo('Puzzle 1 --------------------------    1    --------------------------<br>');
 
 function even_to_zero(int $number): int
 {
-    $numberAsString = (string)$number;
-
-    for ($i = 0; $i < strlen($numberAsString); $i++) {
-        if ($i % 2 === 1) {
-            $numberAsString[$i] = 0;
-        }
-    }
-
-    return (int)$numberAsString;
+    return (int)implode(
+        "",
+        array_values(
+            array_map(
+                fn($number) => $number % 2 === 1 ? $number : 0,
+                str_split($number, 1)
+            )
+        )
+    );
 }
 
 assert(even_to_zero(12345) === 10305);
 
 
-echo('--------------------------    2    --------------------------<br>');
+echo('Puzzle 1 --------------------------    2    --------------------------<br>');
 
 function is_palindrome(string $word): bool
 {
-    $reversed = iconv('utf-8', 'windows-1251', $word);
-    $reversed = strrev($reversed);
-    $reversed = iconv('windows-1251', 'utf-8', $reversed);
-
-    return $reversed === $word;
+    return iconv(
+            'windows-1251',
+            'utf-8',
+            strrev(
+                iconv(
+                    'utf-8',
+                    'windows-1251',
+                    $word
+                )
+            )
+        ) === $word;
 }
 
 assert(is_palindrome('шалаш'));
 assert(!is_palindrome('такси'));
 
 
-echo('--------------------------    3    --------------------------<br>');
+echo('Puzzle 1 --------------------------    3    --------------------------<br>');
 
 function array_double(array $array): array
 {
-    return array_map(fn($number) => $number * 2, $array);
+    return array_map(
+        fn($number) => $number * 2,
+        $array);
 }
 
 assert(array_double([1, 2, 3]) === [2, 4, 6]);
 
-echo('--------------------------    4    --------------------------<br>');
+echo('Puzzle 1 --------------------------    4    --------------------------<br>');
 
 function only_odd(array $array): array
 {
-    $return = [];
-    foreach ($array as $element) {
-        if (1 == $element % 2) {
-            $return[] = $element;
-        }
-    }
-    return $return;
+    return array_values(
+        array_filter(
+            $array,
+            function ($item) {
+                return $item % 2 === 1;
+            }
+        )
+    );
 }
 
 assert(only_odd([1, 2, 3]) === [1, 3]);
+
+echo('Puzzle 2 --------------------------    1    --------------------------<br>');
+
+function divisible_by_three(int $max, int $min): array
+{
+    return array_values(
+        array_filter(
+            range($max, $min, -1),
+            function ($item) {
+                return $item % 3 === 0;
+            }
+        )
+    );
+}
+
+assert(divisible_by_three(12, 0) === [12, 9, 6, 3, 0]);
+assert(divisible_by_three(1002, 0) === range(1002, 0, -3));
+assert(divisible_by_three(1003, 0) === range(1002, 0, -3));
+
+echo('Puzzle 2 --------------------------    2    --------------------------<br>');
+
+function count_even(array $arr): int
+{
+    return array_reduce(
+        $arr,
+        function ($carry, $item) {
+            return $item % 2 === 0 ? ++$carry : $carry;
+        },
+        0
+    );
+}
+
+assert(count_even([1, 2, 3]) === 1);
+assert(count_even([1, 2, 3, 4, 5, 6, 7, 8]) === 4);
