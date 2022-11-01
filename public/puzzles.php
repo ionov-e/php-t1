@@ -124,3 +124,47 @@ function count_even(array $arr): int
 
 assert(count_even([1, 2, 3]) === 1);
 assert(count_even([1, 2, 3, 4, 5, 6, 7, 8]) === 4);
+assert(count_even([1, 2, 3, 4, 5, 6, 7, 8]) !== 5);
+
+echo('Puzzle 2 --------------------------    3    --------------------------<br>');
+
+function min_even(array $arr): int
+{
+    return array_reduce(
+        $arr,
+        function ($carry, $item) {
+            return
+                $item % 2 !== 0 || (!is_null($carry) && ($carry < $item))
+                    ? $carry
+                    : $item;
+        }
+    );
+}
+
+assert(min_even([1, 2, 3, 4]) === 2);
+assert(min_even([0, 2, 3, 4, -23]) === 0);
+assert(min_even([0, 2, 3, 4, -2]) === -2);
+assert(min_even([0, 2, 3, 4, -2]) !== 0);
+assert(min_even([0, 2, 3, 4, -2]) !== 1);
+assert(min_even([0, 2, -8, 3, 4, -2]) === -8);
+
+echo('Puzzle 2 --------------------------    4    --------------------------<br>');
+
+function min_sum_elements(array $arr): array
+{
+    return array_slice(
+        array_reduce(
+            $arr,
+            function ($carry, $item) {
+                return
+                    is_null($carry[0]) || $carry[0] + $carry[1] > $carry[2] + $item
+                        ? [$carry[2], $item, $item]
+                        : [$carry[0], $carry[1], $item];
+            }
+        )
+        ,0, 2);
+}
+
+assert(min_sum_elements([1, 2, 3, 4]) === [1, 2]);
+assert(min_sum_elements([1, 7, 3, 4]) === [3, 4]);
+assert(min_sum_elements([-1, 3, -5, 0, 7, 9]) === [-5, 0]);
