@@ -162,9 +162,50 @@ function min_sum_elements(array $arr): array
                         : [$carry[0], $carry[1], $item];
             }
         )
-        ,0, 2);
+        , 0, 2);
 }
 
 assert(min_sum_elements([1, 2, 3, 4]) === [1, 2]);
 assert(min_sum_elements([1, 7, 3, 4]) === [3, 4]);
 assert(min_sum_elements([-1, 3, -5, 0, 7, 9]) === [-5, 0]);
+
+echo('Recursion -----------------------------------------------------<br>');
+
+function sumn(int $n)
+{
+    if (0 == $n) {
+        return 0;
+    }
+
+    return $n + sumn($n - 1);
+}
+
+assert(sumn(2) == 3);
+assert(sumn(3) == 6);
+assert(sumn(4) == 10);
+assert(sumn(5) == 15);
+
+echo('Closure --------------------------------------------------------<br>');
+
+function create_min_max_validator(int $min, int $max): callable
+{
+    return function (int $n) use ($min, $max) {
+        return ($n <= $max && $n >= $min);
+    };
+}
+
+$validator = create_min_max_validator(2, 5);
+assert($validator(3));
+assert(!$validator(6));
+
+echo('Reference Function Argument -----------------------------<br>');
+
+function add_item(array &$arr, mixed $item): void
+{
+    $arr[] = $item;
+}
+
+$array1 = [1];
+add_item($array1, 2);
+assert($array1 === [1, 2]);
+assert($array1 !== [1, 3]);
