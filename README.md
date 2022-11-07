@@ -12,3 +12,4 @@
 8. "toString": http://localhost:55000/magic-to-string.php
 9. "Construct": http://localhost:55000/magic-construct.php
 10. "Traits": http://localhost:55000/traits.php
+11. "SPL1": http://localhost:55000/spl1.php
