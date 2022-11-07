@@ -58,3 +58,5 @@ assert(
         ->operation(Div::class)
         ->result() != 4
 );
+
+echo "Asserts passed successfully";

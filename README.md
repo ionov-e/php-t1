@@ -9,3 +9,6 @@
 5. "Исключения"-2: http://localhost:55000/exceptions2.php
 6. "Абстрактные классы": http://localhost:55000/abstracts.php
 7. "Интерфейс": http://localhost:55000/interfaces.php
+8. "toString": http://localhost:55000/magic-to-string.php
+9. "Construct": http://localhost:55000/magic-construct.php
+10. "Traits": http://localhost:55000/traits.php
