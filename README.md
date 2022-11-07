@@ -8,3 +8,4 @@
    _Исключение бросается или нет в зависимости от наличия какого-либо GET-содержимого_
 5. "Исключения"-2: http://localhost:55000/exceptions2.php
 6. "Абстрактные классы": http://localhost:55000/abstracts.php
+7. "Интерфейс": http://localhost:55000/interfaces.php
