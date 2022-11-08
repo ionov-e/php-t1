@@ -13,3 +13,4 @@
 9. "Construct": http://localhost:55000/magic-construct.php
 10. "Traits": http://localhost:55000/traits.php
 11. "SPL1": http://localhost:55000/spl1.php
+12. "Monolog": http://localhost:55000/monolog.php
