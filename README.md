@@ -15,6 +15,11 @@
 11. "SPL1": http://localhost:55000/spl1.php
 12. "Monolog": http://localhost:55000/monolog.php
 13. "JS": http://localhost:55000/js.html
-14. "Currency Converter" http://localhost:55000/currency-converter.php
+14. "Currency Converter / Packagist library" http://localhost:55000/currency-converter.php
+    - https://packagist.org/packages/ioncurly/cbr-converter
+    - https://github.com/ionov-e/cbr-converter
 
 Bonus:
+- http://localhost:55000/work-schedule-report.html
+   
+   Крошечная страничка для заполнения отчетов рабочих дней (4 и 8 часов только) используя Javascript и Bootstrap 5
