@@ -1,8 +1,11 @@
 {
   "require": {
-    "vlucas/phpdotenv": "*",
     "ext-iconv": "*",
-    "monolog/monolog": "^3.2"
+    "ext-simplexml": "*",
+    "guzzlehttp/guzzle": "^7.0",
+    "monolog/monolog": "^3.2",
+    "vlucas/phpdotenv": "*",
+    "ioncurly/cbr-converter": "dev-main"
   },
   "autoload": {
     "psr-4": {
