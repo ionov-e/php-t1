@@ -1,3 +1,15 @@
+# Задачки Vetmanager
+
+## Инструкция для разворачивания
+
+1. Через терминал зайти в пустую папку, куда планируется разместить проект
+2. `git clone https://github.com/ionov-e/php-t1.git .` или `git clone git@github.com:ionov-e/php-t1.git .`
+3. `composer install`. Если composer на системе не установлен - добиваемся исполнения этой команды другим способом
+4. `docker compose up -d`
+
+
+## Ссылки на выполненные задачки
+
 1. "Пазлы", "Рекурсия, Замыкание, работа с ссылками": http://localhost:55000/puzzles.php
 2. "Автозагрузка классов"-1: http://localhost:55000/autoload1/index.php
 3. "Автозагрузка классов"-2: http://localhost:55000/autoload2/index.php
@@ -19,7 +31,7 @@
     - https://packagist.org/packages/ioncurly/cbr-converter
     - https://github.com/ionov-e/cbr-converter
 
-Bonus:
+## Бонус:
 - http://localhost:55000/work-schedule-report.html
    
    Крошечная страничка для заполнения отчетов рабочих дней (4 и 8 часов только) используя Javascript и Bootstrap 5
