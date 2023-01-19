@@ -30,6 +30,7 @@
 14. "Currency Converter / Packagist library" http://localhost:55000/currency-converter.php
     - https://packagist.org/packages/ioncurly/cbr-converter
     - https://github.com/ionov-e/cbr-converter
+15. "SPA": https://github.com/ionov-e/spa-php-finance
 
 ## Бонус:
 - http://localhost:55000/work-schedule-report.html
